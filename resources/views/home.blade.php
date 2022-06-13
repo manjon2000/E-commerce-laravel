@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Ecommerce Laravel Project')
+@section('title', 'E-commerce - Home')
 
 @section('content_header')
-    <h1>Ecommerce Laravel Project</h1>
+    <h1 class="card card-body">Ecommerce Laravel Project</h1>
 @stop
 
 @section('content')
-    <p>Ecommerce Laravel Project welcome:)</p>
+    <p class="card card-body">Ecommerce Laravel Project welcome:)</p>
 @stop
 
 @section('css')
