@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Engloba las routas para que funcionen con traducciones estaticas
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+});
