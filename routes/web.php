@@ -12,15 +12,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
 //Engloba las routas para que funcionen con traducciones estaticas
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+    //***************RUTAS DEL FRONTEND*****************
+    //************************************************** 
     Route::get('/', function () {
         return view('welcome');
     });
 
+    //***************RUTAS DEL BACKEND******************
+    //************************************************** 
+
+    //Protege las rutas de debajo con el Auth
     Auth::routes();
+
+    //Ruta del dashboard
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/home', 'HomeController@index')->name('home');
+
+    //Ruta de categorias en admin
     Route::resource('categories', CategoriesController::class);
+
+    //Ruta de Usuarios
+    Route::resource('profiles', 'UsersController');
 
 });
