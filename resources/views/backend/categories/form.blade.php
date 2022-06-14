@@ -7,62 +7,76 @@
 @stop
 
 @section('content')
-    @if (isset($category))
-        {!! Form::open(['url' => route('categories.update',['category' => $category->id]), 'method' => 'PUT', 'files' => 'true']) !!}
+    <div class="container bg-white p-3">
+        @if (isset($category))
+            {!! Form::open(['url' => route('categories.update', ['category' => $category->id]), 'method' => 'PUT', 'files' => 'true']) !!}
+            <div class="mb-3">
+                {!! Form::label('name', 'Name', ['class' => 'form-label']) !!}
+                {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}
+            </div>
+            {{ App::setLocale('es') }}
+            <div class="mb-3">
+                {!! Form::label('description_es', 'description es', ['class' => 'form-label']) !!}
+                {!! Form::text('description_es', $category->description, ['class' => 'form-control']) !!}
+            </div>
 
-        {!! Form::label('name', 'Name', []) !!}
-        {!! Form::text('name', $category->name, []) !!}
-        
-        {{App::setLocale('es')}}
+            {{ App::setLocale('en') }}
+            <div class="mb-3">
+                {!! Form::label('description_en', 'description en', ['class' => 'form-label']) !!}
+                {!! Form::text('description_en', $category->description, ['class' => 'form-control']) !!}
+            </div>
 
-        {!! Form::label('description_es', 'description es', []) !!}
-        {!! Form::text('description_es', $category->description, []) !!}
-        
-        {{ App::setLocale('en')}}
+            {{ App::setLocale('fr') }}
+            <div class="mb-3">
+                {!! Form::label('description_fr', 'description fr', ['class' => 'form-label']) !!}
+                {!! Form::text('description_fr', $category->description, ['class' => 'form-control']) !!}
+            </div>
+            <div class="mb-3">
 
-        {!! Form::label('description_en', 'description en', []) !!}
-        {!! Form::text('description_en', $category->description, []) !!}
-        
-        {{ App::setLocale('fr')}}
+                {!! Form::file('image_category', ['class' => 'form-control', 'type' => 'file', 'id' => 'formFile']) !!}
+            </div>
 
-        {!! Form::label('description_fr', 'description fr', []) !!}
-        {!! Form::text('description_fr', $category->description, []) !!}
+            <div class="mb-3">
+                <img src='{{ asset('images/' . $category->image_category) }}' width="100px">
+            </div>
+            <div class="mb-3">
+                {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
+            </div>
 
-        <img src='{{ asset('images/' . $category->image_category) }}' width="100px">
-        {!! Form::file('image_category', []) !!}
-        {!! Form::submit('Crear', []) !!}
+            {!! Form::close() !!}
+        @else
+            {!! Form::open(['url' => route('categories.store'), 'method' => 'POST', 'files' => 'true']) !!}
+            <div class="mb-3">
+                {!! Form::label('name', 'Name', ['class' => 'form-label']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="mb-3">
+                {!! Form::label('description_es', 'description es', ['class' => 'form-label']) !!}
+                {!! Form::text('description_es', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="mb-3">
+                {!! Form::label('description_en', 'description en', ['class' => 'form-label']) !!}
+                {!! Form::text('description_en', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="mb-3">
+                {!! Form::label('description_fr', 'description fr', ['class' => 'form-label']) !!}
+                {!! Form::text('description_fr', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="mb-3">
+                {!! Form::label('image_category', 'image_category', ['class' => 'form-label']) !!}
+            </div>
+            <div class="mb-3">
+                {!! Form::file('image_category', ['class' => 'form-control', 'type' => 'file', 'id' => 'formFile']) !!}
+            </div>
+            <div class="mb-3"> <label for="formFile" class="form-label">Default file input example</label>
+                <input class="form-control" type="file" id="formFile"> </div>
+            <div class="mb-3">
+                {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
+            </div>
+            {!! Form::close() !!}
+        @endif
 
-        {!! Form::close() !!}
-    @else
-        {!! Form::open(['url' => route('categories.store'), 'method' => 'POST', 'files' => 'true']) !!}
-        
-        {!! Form::label('name', 'Name', []) !!}
-        {!! Form::text('name', null, []) !!}
-
-        {{App::setLocale('es')}}
-
-        {!! Form::label('description_es', 'description es', []) !!}
-        {!! Form::text('description_es', null, []) !!}
-        
-        {{ App::setLocale('en')}}
-
-        {!! Form::label('description_en', 'description en', []) !!}
-        {!! Form::text('description_en', null, []) !!}
-        
-        {{ App::setLocale('fr')}}
-
-        {!! Form::label('description_fr', 'description fr', []) !!}
-        {!! Form::text('description_fr', null, []) !!}
-        
-        {!! Form::label('image_category', 'image_category', []) !!}
-        {!! Form::file('image_category', []) !!}
-        
-        {!! Form::submit('Crear', []) !!}
-
-        {!! Form::close() !!}
-    @endif
-
-
+    </div>
 @stop
 
 @section('css')
@@ -70,6 +84,5 @@
 @stop
 
 @section('js')
-    <script>
-    </script>
+    <script></script>
 @stop

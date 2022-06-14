@@ -56,7 +56,7 @@ class CategoriesController extends Controller
         $data['en'] = $data_en;
         $category = Category::create($data);
 
-        return view("backend.categories.index");
+        return redirect()->back();
 
     }
 
@@ -112,6 +112,7 @@ class CategoriesController extends Controller
         }
 
         $category->save();
+        return redirect()->back();
     }
 
     /**
@@ -131,5 +132,6 @@ class CategoriesController extends Controller
             //throw $th;
         }
         $category->delete();
+        return redirect()->back();
     }
 }

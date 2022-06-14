@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<a href="{{ route('categories.create') }}"><button>Crear</button></a>
+<a href="{{ route('categories.create') }}"><button class="btn btn-success">Crear</button></a>
 
 <div class="container">
 
@@ -20,7 +20,7 @@
             <th>img</th>
             <th>acciones</th>
         </tr>
-        @foreach ($categories as $category)+
+        @foreach ($categories as $category)
             <tr>
                 <td>{{ $category->name }}</td>
                 {{App::setLocale('es')}}
@@ -31,12 +31,12 @@
                 <td>{{ $category->description }}</td>
                 <td><img src="{{asset("images/".$category->image_category)}}" alt="" width="100px"></td>
                 <td>
-                    <a href="{{ route('categories.show',['category' => $category->id]) }}"><button>Detall</button></a>
-                <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button>Editar</button></a>
+                    <a href="{{ route('categories.show',['category' => $category->id]) }}"><button class="btn btn-primary">Detall</button></a>
+                <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button class="btn btn-secondary">Editar</button></a>
                 {!! Form::open(['url' => route('categories.destroy',['category' => $category->id]), 'method' => 'POST']) !!}
                 @csrf
                 @method('DELETE')
-                {!! Form::submit('Eliminar', []) !!}
+                {!! Form::submit('Eliminar', ["class"=>"btn btn-danger"]) !!}
     
                 {!! Form::close() !!}
             </td>
