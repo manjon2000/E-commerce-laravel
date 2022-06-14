@@ -24,7 +24,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     //***************RUTAS DEL BACKEND******************
     //**************************************************
 
-    //Protege las rutas de debajo con el Auth
+    //Genera las rutas de autenticacion login, register, logout...
     Auth::routes();
     //protege las rutas de dentro
     Route::group(['middleware' => ['auth']], function () {
