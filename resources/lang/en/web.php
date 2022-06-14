@@ -11,6 +11,16 @@
         'country_title'=>'Country:',
         'modificate_button'=>'Modificate data',
         'edit_profile'=>'Edit profile',
-        'not-data'=>"There is no data to show."
+        'not-data'=>"There is no data to show.",
+        
+        "name"=>"Name",
+        "categories"=>"Categories",
+        "list"=>"List",
+        "edit"=>"Edit",
+        "detail"=>"Detail",
+        "update"=>"Update",
+        "delete"=>"Delete",
+        ""=>"",
+        ""=>"",
     ];
 ?>

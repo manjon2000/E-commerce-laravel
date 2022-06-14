@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
@@ -16,9 +16,7 @@ class CategoriesController extends Controller
     {
         $categories = Category::get();
 
-
-
-        return view("backend.categories.index")->with("categories",$categories);
+        return view("backend.categories.index")->with("categories", $categories);
     }
 
     /**
@@ -30,7 +28,7 @@ class CategoriesController extends Controller
     {
 
         return view("backend.categories.form");
-        
+
     }
 
     /**
@@ -41,17 +39,25 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        
-  
-        $imageName = time().'.'.$request->image_category->extension();  
-   
+
+        $imageName = time() . '.' . $request->image_category->extension();
+
         $request->image_category->move(public_path('images'), $imageName);
-        $category = new Category;
-        $category->name=$request->name;
-        $category->image_category=$imageName;
-        $category->save();
-        return view("backend.categories.index");
-        
+
+        $data = [
+            "name" => $request->name,
+            "image_category" => $imageName,
+        ];
+        $data_es = ['description' => $request->description_es];
+        $data['es'] = $data_es;
+        $data_fr = ['description' => $request->description_fr];
+        $data['fr'] = $data_fr;
+        $data_en = ['description' => $request->description_en];
+        $data['en'] = $data_en;
+        $category = Category::create($data);
+
+        return redirect()->back();
+
     }
 
     /**
@@ -64,7 +70,7 @@ class CategoriesController extends Controller
     {
         $category = Category::find($id);
 
-        return view("backend.categories.detail")->with("category",$category);
+        return view("backend.categories.detail")->with("category", $category);
     }
 
     /**
@@ -77,7 +83,7 @@ class CategoriesController extends Controller
     {
         $category = Category::find($id);
 
-        return view("backend.categories.form")->with("category",$category);
+        return view("backend.categories.form")->with("category", $category);
     }
 
     /**
@@ -89,23 +95,24 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $category = Category::find($id);
-        $category->name=$request->name;
-        if(isset($request->image_category)){
-            $imageName = time().'.'.$request->image_category->extension();  
+        $category->name = $request->name;
+        if (isset($request->image_category)) {
+            $imageName = time() . '.' . $request->image_category->extension();
             $request->image_category->move(public_path('images'), $imageName);
             try {
                 //code...
-            unlink(public_path("images/".$category->image_category));
+                unlink(public_path("images/" . $category->image_category));
 
             } catch (\Throwable $th) {
                 //throw $th;
             }
-            $category->image_category=$imageName;
+            $category->image_category = $imageName;
         }
-        
+
         $category->save();
+        return redirect()->back();
     }
 
     /**
@@ -119,11 +126,12 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         try {
             //code...
-        unlink(public_path("images/".$category->image_category));
+            unlink(public_path("images/" . $category->image_category));
 
         } catch (\Throwable $th) {
             //throw $th;
         }
         $category->delete();
+        return redirect()->back();
     }
 }
