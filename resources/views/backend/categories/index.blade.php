@@ -9,6 +9,7 @@
 @section('content')
 
 <a href="{{ route('categories.create') }}"><button class="btn btn-success">{{ __("web.create")}}</button></a>
+<a href="{{route("categories.index")}}">{{__("web.return")}}</a>
 
 <div class="container">
 
@@ -24,12 +25,9 @@
         @foreach ($categories as $category)
             <tr>
                 <td>{{ $category->name }}</td>
-                {{App::setLocale('es')}}
-                <td>{{ $category->description }}</td>
-               {{ App::setLocale('en')}}
-                <td>{{ $category->description }}</td>
-               {{ App::setLocale('fr')}}
-                <td>{{ $category->description }}</td>
+                <td>{{ $category->translate('es')->description }}</td>
+                <td>{{ $category->translate('en')->description }}</td>
+                <td>{{ $category->translate('fr')->description }}</td>
                 <td><img src="{{asset("images/".$category->image_category)}}" alt="" width="100px"></td>
                 <td>
                     <a href="{{ route('categories.show',['category' => $category->id]) }}"><button class="btn btn-primary">{{__("web.detail")}}</button></a>

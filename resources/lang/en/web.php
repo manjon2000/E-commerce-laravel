@@ -20,6 +20,10 @@
         "detail"=>"Detail",
         "update"=>"Update",
         "delete"=>"Delete",
+        "create"=>"Create",
+        "return"=>"Return",
+        "tools"=>"Tools",
+        ""=>"",
         ""=>"",
         ""=>"",
     ];

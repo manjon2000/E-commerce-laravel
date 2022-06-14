@@ -9,28 +9,35 @@
 
 @section('content')
     <div class="container bg-white p-3">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
+          <a href="{{route("categories.index")}}"><button>{{__("web.return")}}</button></a>
         @if (isset($category))
             {!! Form::open(['url' => route('categories.update', ['category' => $category->id]), 'method' => 'PUT', 'files' => 'true']) !!}
             <div class="mb-3">
                 {!! Form::label('name', __("web.name"), ['class' => 'form-label']) !!}
                 {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}
             </div>
-            {{ App::setLocale('es') }}
             <div class="mb-3">
                 {!! Form::label('description_es', 'description es', ['class' => 'form-label']) !!}
-                {!! Form::text('description_es', $category->description, ['class' => 'form-control']) !!}
+                {!! Form::text('description_es', $category->translate('es')->description, ['class' => 'form-control']) !!}
             </div>
 
-            {{ App::setLocale('en') }}
             <div class="mb-3">
                 {!! Form::label('description_en', 'description en', ['class' => 'form-label']) !!}
-                {!! Form::text('description_en', $category->description, ['class' => 'form-control']) !!}
+                {!! Form::text('description_en', $category->translate('en')->description, ['class' => 'form-control']) !!}
             </div>
 
-            {{ App::setLocale('fr') }}
             <div class="mb-3">
                 {!! Form::label('description_fr', 'description fr', ['class' => 'form-label']) !!}
-                {!! Form::text('description_fr', $category->description, ['class' => 'form-control']) !!}
+                {!! Form::text('description_fr', $category->translate('fr')->description, ['class' => 'form-control']) !!}
             </div>
             <div class="mb-3">
 

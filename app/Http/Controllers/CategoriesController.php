@@ -39,7 +39,13 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'image_category' => 'required|max:2048|mimes:jpg,jpeg,png',
+            "description_es" => 'required|max:255',
+            "description_en" => 'required|max:255',
+            "description_fr" => 'required|max:255',
+        ]);
         $imageName = time() . '.' . $request->image_category->extension();
 
         $request->image_category->move(public_path('images'), $imageName);
@@ -95,7 +101,13 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'image_category' => 'max:2048|mimes:jpg,jpeg,png',
+            "description_es" => 'required|max:255',
+            "description_en" => 'required|max:255',
+            "description_fr" => 'required|max:255',
+        ]);
         $category = Category::find($id);
         $category->name = $request->name;
         if (isset($request->image_category)) {
