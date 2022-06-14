@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Ecommerce Laravel Project')
+@section('title', 'E-commerce - Categories')
 
 @section('content_header')
     <h1>Ecommerce Laravel Project</h1>

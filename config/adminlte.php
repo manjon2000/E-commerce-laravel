@@ -256,7 +256,7 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'profile',
+            'url'  => 'profiles',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
