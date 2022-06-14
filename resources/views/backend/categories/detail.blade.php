@@ -9,7 +9,7 @@
 @section('content')
 
 <a href="{{ route('categories.create') }}"><button class="btn btn-success">{{ __("web.create")}}</button></a>
-<a href="{{route("categories.index")}}">{{__("web.return")}}</a>
+<a href="{{route("categories.index")}}"><button class='btn btn-primary'>{{__("web.return")}}</button></a>
 
 <div class="container">
 

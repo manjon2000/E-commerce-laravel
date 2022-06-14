@@ -18,7 +18,7 @@
                 </ul>
             </div>
           @endif
-          <a href="{{route("categories.index")}}"><button>{{__("web.return")}}</button></a>
+          <a href="{{route("categories.index")}}"><button class='btn btn-primary'>{{__("web.return")}}</button></a>
         @if (isset($category))
             {!! Form::open(['url' => route('categories.update', ['category' => $category->id]), 'method' => 'PUT', 'files' => 'true']) !!}
             <div class="mb-3">
