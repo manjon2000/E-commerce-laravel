@@ -47,7 +47,7 @@
                 <img src='{{ asset('images/' . $category->image_category) }}' width="100px">
             </div>
             <div class="mb-3">
-                {!! Form::submit(__("web.create"), ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit(__("web.update"), ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}

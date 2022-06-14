@@ -41,7 +41,7 @@ class CategoriesController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:categories|max:255',
-            'image_category' => 'required|max:2048|mimes:jpg,jpeg,png',
+            'image_category' => 'required|max:10000|mimes:jpg,jpeg,png',
             "description_es" => 'required|max:255',
             "description_en" => 'required|max:255',
             "description_fr" => 'required|max:255',
@@ -62,7 +62,7 @@ class CategoriesController extends Controller
         $data['en'] = $data_en;
         $category = Category::create($data);
 
-        return redirect()->back();
+        return redirect(route("categories.index"));
 
     }
 
@@ -75,8 +75,11 @@ class CategoriesController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
+        if(isset($category)){
+            return view("backend.categories.detail")->with("category", $category);
 
-        return view("backend.categories.detail")->with("category", $category);
+        }
+        return redirect(route("categories.index"))->with("message", __("web.not-data"));
     }
 
     /**
@@ -88,8 +91,10 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-
-        return view("backend.categories.form")->with("category", $category);
+        if (isset($category)) {
+            return view("backend.categories.form")->with("category", $category);
+        }
+        return redirect(route("categories.index"))->withInput(['message' => __("web.not-data")]);
     }
 
     /**
@@ -109,22 +114,25 @@ class CategoriesController extends Controller
             "description_fr" => 'required|max:255',
         ]);
         $category = Category::find($id);
-        $category->name = $request->name;
-        if (isset($request->image_category)) {
-            $imageName = time() . '.' . $request->image_category->extension();
-            $request->image_category->move(public_path('images'), $imageName);
-            try {
-                //code...
-                unlink(public_path("images/" . $category->image_category));
+        if (isset($category)) {
+            $category->name = $request->name;
+            if (isset($request->image_category)) {
+                $imageName = time() . '.' . $request->image_category->extension();
+                $request->image_category->move(public_path('images'), $imageName);
+                try {
+                    //code...
+                    unlink(public_path("images/" . $category->image_category));
 
-            } catch (\Throwable $th) {
-                //throw $th;
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                $category->image_category = $imageName;
             }
-            $category->image_category = $imageName;
+
+            $category->save();
+            return redirect()->back();
         }
 
-        $category->save();
-        return redirect()->back();
     }
 
     /**

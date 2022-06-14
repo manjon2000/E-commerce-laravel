@@ -12,6 +12,22 @@
 <a href="{{route("categories.index")}}"><button class='btn btn-primary'>{{__("web.return")}}</button></a>
 
 <div class="container">
+    @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
+    @if (isset($message))
+    <div class="alert alert-danger">
+        <ul>
+              <li>{{ $message }}</li>
+        </ul>
+    </div>
+    @endif
 
     <table class="table table-bordered">
         <tr>

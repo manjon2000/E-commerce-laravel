@@ -22,6 +22,7 @@
             <th>img</th>
             <th>{{ __("web.tools")}}</th>
         </tr>
+        
             <tr>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->translate('es')->description }}</td>
