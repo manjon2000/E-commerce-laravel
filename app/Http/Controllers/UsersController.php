@@ -18,13 +18,12 @@ class UsersController extends Controller
     {
         $users=User::get();
         foreach($users as $user){
-        $cities=City::where('id', '=', $user->city_id)->get();}
-        foreach($cities as $city){
-        $countries=Country::where('id', '=', $city->country_id)->get();}
+        $cities=City::where('id', '=', $user->city_id)->get();
+        $countries=Country::where('id', '=', $user->cities->country_id)->get();}
         return view('backend.users.index')
         -> with ('countries', $countries)
         -> with ('cities', $cities)
-        ->with ('users', $users);
+        -> with ('users', $users);
     }
 
     /**
@@ -94,8 +93,8 @@ class UsersController extends Controller
         $data->first_name = $request->first_name;
         $data->last_name = $request->last_name;
         $data->address = $request->address;
-        $data_es->city_id = $request->city_es_value;
-        $data_fr->city_id = $request->city_fr_value;
+        $data_es->city_id = $request->city_es;
+        $data_fr->city_id = $request->city_fr;
         $data->save();
         $data_es->save();
         $data_fr->save();

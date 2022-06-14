@@ -36,10 +36,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function countries(){
-        return $this->belongsTo('App\Models\Country');
-    }
     public function cities(){
-        return $this->belongsTo('App\Models\City');
+        return $this->belongsTo('App\Models\City', 'city_id', 'id');
     }
 }
