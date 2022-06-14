@@ -13,13 +13,22 @@
 
     <table class="table table-bordered">
         <tr>
+            <th>name</th>
             <th>ES</th>
+            <th>EN</th>
+            <th>FR</th>
             <th>img</th>
             <th>acciones</th>
         </tr>
-        @foreach ($categories as $category)
+        @foreach ($categories as $category)+
             <tr>
                 <td>{{ $category->name }}</td>
+                {{App::setLocale('es')}}
+                <td>{{ $category->description }}</td>
+               {{ App::setLocale('en')}}
+                <td>{{ $category->description }}</td>
+               {{ App::setLocale('fr')}}
+                <td>{{ $category->description }}</td>
                 <td><img src="{{asset("images/".$category->image_category)}}" alt="" width="100px"></td>
                 <td>
                     <a href="{{ route('categories.show',['category' => $category->id]) }}"><button>Detall</button></a>

@@ -12,6 +12,21 @@
 
         {!! Form::label('name', 'Name', []) !!}
         {!! Form::text('name', $category->name, []) !!}
+        
+        {{App::setLocale('es')}}
+
+        {!! Form::label('description_es', 'description es', []) !!}
+        {!! Form::text('description_es', $category->description, []) !!}
+        
+        {{ App::setLocale('en')}}
+
+        {!! Form::label('description_en', 'description en', []) !!}
+        {!! Form::text('description_en', $category->description, []) !!}
+        
+        {{ App::setLocale('fr')}}
+
+        {!! Form::label('description_fr', 'description fr', []) !!}
+        {!! Form::text('description_fr', $category->description, []) !!}
 
         <img src='{{ asset('images/' . $category->image_category) }}' width="100px">
         {!! Form::file('image_category', []) !!}
@@ -23,6 +38,21 @@
         
         {!! Form::label('name', 'Name', []) !!}
         {!! Form::text('name', null, []) !!}
+
+        {{App::setLocale('es')}}
+
+        {!! Form::label('description_es', 'description es', []) !!}
+        {!! Form::text('description_es', null, []) !!}
+        
+        {{ App::setLocale('en')}}
+
+        {!! Form::label('description_en', 'description en', []) !!}
+        {!! Form::text('description_en', null, []) !!}
+        
+        {{ App::setLocale('fr')}}
+
+        {!! Form::label('description_fr', 'description fr', []) !!}
+        {!! Form::text('description_fr', null, []) !!}
         
         {!! Form::label('image_category', 'image_category', []) !!}
         {!! Form::file('image_category', []) !!}
