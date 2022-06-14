@@ -36,4 +36,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     //Ruta de Usuarios
     Route::resource('profiles', 'UsersController');
 
+
+
+
+    //******************UTILES********************* */
+
+    Route::get('/cities/{country}', 'ToolsController@cities')->name('tools.cities');
+
+
 });
