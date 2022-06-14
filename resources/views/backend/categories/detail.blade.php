@@ -1,49 +1,50 @@
 @extends('adminlte::page')
 
-@section('title', 'Ecommerce Laravel Project')
+@section('title', 'E-commerce - Categories')
 
 @section('content_header')
-    <h1></h1>
+    <h1>{{ __('web.categories') }} | {{ __('web.detail') }}</h1>
 @stop
 
 @section('content')
-<a href="{{ route('categories.create') }}"><button class="btn btn-success">Crear</button></a>
 
-<div class="container">
+    <a href="{{ route('categories.create') }}"><button class="btn btn-success">{{ __('web.create') }}</button></a>
 
-    <table class="table table-bordered">
-        <tr>
-            <th>name</th>
-            <th>ES</th>
-            <th>EN</th>
-            <th>FR</th>
-            <th>img</th>
-            <th>acciones</th>
-        </tr>
+    <div class="container">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>{{ __('web.name') }}</th>
+                <th>ES</th>
+                <th>EN</th>
+                <th>FR</th>
+                <th>img</th>
+                <th>{{ __('web.tools') }}</th>
+            </tr>
             <tr>
                 <td>{{ $category->name }}</td>
-                {{App::setLocale('es')}}
+                {{ App::setLocale('es') }}
                 <td>{{ $category->description }}</td>
-               {{ App::setLocale('en')}}
+                {{ App::setLocale('en') }}
                 <td>{{ $category->description }}</td>
-               {{ App::setLocale('fr')}}
+                {{ App::setLocale('fr') }}
                 <td>{{ $category->description }}</td>
-                <td><img src="{{asset("images/".$category->image_category)}}" alt="" width="100px"></td>
+                <td><img src="{{ asset('images/' . $category->image_category) }}" alt="" width="100px"></td>
                 <td>
-                    <a href="{{ route('categories.show',['category' => $category->id]) }}"><button class="btn btn-primary">Detall</button></a>
-                <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button class="btn btn-secondary">Editar</button></a>
-                {!! Form::open(['url' => route('categories.destroy',['category' => $category->id]), 'method' => 'POST']) !!}
-                @csrf
-                @method('DELETE')
-                {!! Form::submit('Eliminar', ["class"=>"btn btn-danger"]) !!}
-    
-                {!! Form::close() !!}
-            </td>
+                    <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button
+                            class="btn btn-secondary">{{ __('web.edit') }}</button></a>
+                    {!! Form::open(['url' => route('categories.destroy', ['category' => $category->id]), 'method' => 'POST']) !!}
+                    @csrf
+                    @method('DELETE')
+                    {!! Form::submit(__('web.delete'), ['class' => 'btn btn-danger']) !!}
+
+                    {!! Form::close() !!}
+                </td>
 
             </tr>
-    
-    </table>
-</div>
+
+        </table>
+    </div>
 
 @stop
 
@@ -52,9 +53,7 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
 @stop
-
-
-
-

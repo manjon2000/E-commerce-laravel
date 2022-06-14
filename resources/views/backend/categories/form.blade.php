@@ -1,9 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Ecommerce Laravel Project')
+@section('title', 'E-commerce - Categories')
+
 
 @section('content_header')
-    <h1>Ecommerce Laravel Project</h1>
+    <h1>{{__("web.categories")}} | {{__("web.create")}}</h1>
 @stop
 
 @section('content')
@@ -11,7 +12,7 @@
         @if (isset($category))
             {!! Form::open(['url' => route('categories.update', ['category' => $category->id]), 'method' => 'PUT', 'files' => 'true']) !!}
             <div class="mb-3">
-                {!! Form::label('name', 'Name', ['class' => 'form-label']) !!}
+                {!! Form::label('name', __("web.name"), ['class' => 'form-label']) !!}
                 {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}
             </div>
             {{ App::setLocale('es') }}
@@ -35,19 +36,18 @@
 
                 {!! Form::file('image_category', ['class' => 'form-control', 'type' => 'file', 'id' => 'formFile']) !!}
             </div>
-
             <div class="mb-3">
                 <img src='{{ asset('images/' . $category->image_category) }}' width="100px">
             </div>
             <div class="mb-3">
-                {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit(__("web.create"), ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}
         @else
             {!! Form::open(['url' => route('categories.store'), 'method' => 'POST', 'files' => 'true']) !!}
             <div class="mb-3">
-                {!! Form::label('name', 'Name', ['class' => 'form-label']) !!}
+                {!! Form::label('name', __("web.name"), ['class' => 'form-label']) !!}
                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
             <div class="mb-3">
@@ -68,10 +68,8 @@
             <div class="mb-3">
                 {!! Form::file('image_category', ['class' => 'form-control', 'type' => 'file', 'id' => 'formFile']) !!}
             </div>
-            <div class="mb-3"> <label for="formFile" class="form-label">Default file input example</label>
-                <input class="form-control" type="file" id="formFile"> </div>
             <div class="mb-3">
-                {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit(__("web.create"), ['class' => 'btn btn-primary']) !!}
             </div>
             {!! Form::close() !!}
         @endif

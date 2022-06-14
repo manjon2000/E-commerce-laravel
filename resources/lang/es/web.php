@@ -11,6 +11,16 @@
         'country_title'=>'País:',
         'modificate_button'=>'Modificar los datos',
         'edit_profile'=>'Editar el perfil',
-        'not-data'=>"No hay datos que mostrar."
+        'not-data'=>"No hay datos que mostrar.",
+
+        "name"=>"Nombre",
+        "categories"=>"Categorias",
+        "list"=>"Lista",
+        "edit"=>"Editar",
+        "detail"=>"Detaille",
+        "update"=>"Actualizar",
+        "delete"=>"Borrar",
+        ""=>"",
+        ""=>"",
     ];
 ?>
