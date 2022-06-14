@@ -67,8 +67,6 @@
             {!!Form::text('address', $user->address, ['class'=>'form-control text-center rounded'])!!}
             @endif
         </div>
-@endif
-@endforeach
         <!-- Pais -->
         <div class="mb-3 col-6">
             <label for="country" class="form-label ml-5">{{__('web.country_title')}}</label>
@@ -87,18 +85,22 @@
         <div class="mb-3 col-6">
             <label for="city" style="display:none;" class="form-label ml-5 city-label">{{__('web.city_title')}}</label>
         </div>
-        <div class="mb-3 col-6">
-            <select style="display:none;" name="city_es" class="form-control text-center city-select-1">
+        <div  class="mb-3 col-6">
+            <select style="display:none;" name="city_es" class="form-control text-center city-select-es">
                         @foreach($citiesspains as $cityspain)
                             <option value="{{$cityspain->id}}">{{$cityspain->name}}</option>
                         @endforeach
             </select>
-            <select style="display:none;" name="city_fr" class="form-control text-center city-select-2">
+            
+        
+            <select style="display:none;" name="city_fr" class="form-control text-center city-select-fr">
                         @foreach($citiesfrances as $cityfrance)
                             <option value="{{$cityfrance->id}}">{{$cityfrance->name}}</option>
                         @endforeach
             </select>
+            
         </div>
+            
     </div>
 </div>
 <!-- MODIFICAR -->
@@ -112,6 +114,8 @@
     </div>
 </div>
 {!!Form::close()!!}
+@endif
+@endforeach
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(function(){
@@ -119,13 +123,15 @@
             $value= $(this).val();
             $('.value_country_input').val($value);
             if($('.value_country_input').val() == 1){
+                $('.city-select-fr').css('display', 'none');
                 $('.city-label').css('display', '');
-                $('.city-select-1').css('display', '');
-                $('.city-select-2').css('display', 'none');
+                $('.city-select-es').css('display', '');
+
             } else {
+                $('.city-select-es').css('display', 'none');
                 $('.city-label').css('display', '');
-                $('.city-select-2').css('display', '');
-                $('.city-select-1').css('display', 'none');
+                $('.city-select-fr').css('display', '');
+                
             }
         });
     });

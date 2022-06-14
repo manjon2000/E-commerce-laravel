@@ -59,14 +59,18 @@
                             <label for="username" class="form-label ml-5">{{__('web.city_title')}}</label>
                         </div>
                         <div class="mb-3 col-6">
-                            <label name="username" class="form-label">@if(is_null($user->city)){{__('web.not-data')}} @else{{$user->city}}@endif</label>
+                        @foreach($cities as $city)
+                            <label name="username" class="form-label">@if(is_null($user->city_id)){{__('web.not-data')}} @else{{$city->name}}@endif</label>
+                        @endforeach
                         </div>
                         <!-- País -->
                         <div class="mb-3 col-6 vvv">
                             <label for="username" class="form-label ml-5 mb-5">{{__('web.country_title')}}</label>
                         </div>
                         <div class="mb-3 col-6">
-                            <label name="username" class="form-label mb-5">@if(is_null($user->country)){{__('web.not-data')}} @else{{$user->country}}@endif</label>
+                        @foreach($countries as $country)
+                            <label name="username" class="form-label mb-5">@if(is_null($user->city_id)){{__('web.not-data')}} @else{{$country->name}}@endif</label>
+                        @endforeach
                         </div>
                 </div>
             </div>

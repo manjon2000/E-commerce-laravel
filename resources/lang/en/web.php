@@ -12,7 +12,7 @@
         'modificate_button'=>'Modificate data',
         'edit_profile'=>'Edit profile',
         'not-data'=>"There is no data to show.",
-        
+    
         "name"=>"Name",
         "categories"=>"Categories",
         "list"=>"List",

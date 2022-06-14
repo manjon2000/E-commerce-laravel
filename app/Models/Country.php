@@ -8,7 +8,7 @@ class Country extends Model
 {
     protected $fillable = ['name'];
     
-    public function users(){
-        return $this->hasMany('App\User');
+    public function cities(){
+        return $this->hasMany('App\Models\City', 'country_id', 'id');
     }
 }
