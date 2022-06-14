@@ -17,8 +17,10 @@ class UsersController extends Controller
     public function index()
     {
         $users=User::get();
-        $cities=City::get();
-        $countries=Country::get();
+        foreach($users as $user){
+        $cities=City::where('id', '=', $user->city_id)->get();}
+        foreach($cities as $city){
+        $countries=Country::where('id', '=', $city->country_id)->get();}
         return view('backend.users.index')
         -> with ('countries', $countries)
         -> with ('cities', $cities)
@@ -66,14 +68,15 @@ class UsersController extends Controller
     public function edit($id)
     {
         $users=User::get();
-        $citiesspains=City::where('country_id', 1)->get();
-        $citiesfrances=City::where('country_id', 2)->get();
+        $citiesfrances=City::where('country_id','=', 2)->get();
         $countries=Country::get();
+        $citiesspains=City::where('country_id', '=', 1)->get();
         return view('backend.users.edit')
-        -> with ('countries', $countries)
-        -> with ('citiesspains', $citiesspains)
+        -> with ('users', $users)
         -> with ('citiesfrances', $citiesfrances)
-        -> with ('users', $users);
+        -> with ('countries', $countries)
+        -> with ('citiesspains', $citiesspains);
+
     }
 
     /**
@@ -85,19 +88,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Agrupo datos de usuarios
         $data=User::find($id);
+        $data_es=User::find($id);
+        $data_fr=User::find($id);
         $data->first_name = $request->first_name;
         $data->last_name = $request->last_name;
         $data->address = $request->address;
-        if($request->city_es){
-            $data->city_id = $request->city_es;
-        } else {
-            $data->city_id = $request->city_fr;
-        }
+        $data_es->city_id = $request->city_es_value;
+        $data_fr->city_id = $request->city_fr_value;
         $data->save();
-
-        
+        $data_es->save();
+        $data_fr->save();
+        return redirect('/profiles');
     }
 
     /**

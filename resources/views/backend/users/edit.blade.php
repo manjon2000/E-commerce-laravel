@@ -87,18 +87,22 @@
         <div class="mb-3 col-6">
             <label for="city" style="display:none;" class="form-label ml-5 city-label">{{__('web.city_title')}}</label>
         </div>
-        <div class="mb-3 col-6">
-            <select style="display:none;" name="city_es" class="form-control text-center city-select-1">
+        <div  class="mb-3 col-6">
+            <select style="display:none;" name="city_es" class="form-control text-center city-select-es">
                         @foreach($citiesspains as $cityspain)
                             <option value="{{$cityspain->id}}">{{$cityspain->name}}</option>
                         @endforeach
             </select>
-            <select style="display:none;" name="city_fr" class="form-control text-center city-select-2">
+            <input type="hidden" name="city_es_value" class="city_es_value" value="">
+        
+            <select style="display:none;" name="city_fr" class="form-control text-center city-select-fr">
                         @foreach($citiesfrances as $cityfrance)
                             <option value="{{$cityfrance->id}}">{{$cityfrance->name}}</option>
                         @endforeach
             </select>
+            <input type="hidden" name="city_fr_value" class="city_fr_value" value="">
         </div>
+            
     </div>
 </div>
 <!-- MODIFICAR -->
@@ -119,14 +123,26 @@
             $value= $(this).val();
             $('.value_country_input').val($value);
             if($('.value_country_input').val() == 1){
+                $('.city-select-fr').css('display', 'none');
                 $('.city-label').css('display', '');
-                $('.city-select-1').css('display', '');
-                $('.city-select-2').css('display', 'none');
+                $('.city-select-es').css('display', '');
+
             } else {
+                $('.city-select-es').css('display', 'none');
                 $('.city-label').css('display', '');
-                $('.city-select-2').css('display', '');
-                $('.city-select-1').css('display', 'none');
+                $('.city-select-fr').css('display', '');
+                
             }
+        });
+        $('.city-select-es').change(function(){
+            $valuees= $(this).val();
+            $('.city_es_value').val($valuees);
+            console.log($('.city_es_value').val())
+        });
+        $('.city-select-fr').change(function(){
+            $valuefr= $(this).val();
+            $('.city_fr_value').val($valuefr);
+            console.log($('.city_fr_value').val())
         });
     });
 </script>
