@@ -54,14 +54,15 @@ class StoresController extends Controller
             'timeEnd'       => 'required|max:5'
         ]);
 
-        $schedule = $request->timeStart .','. $request->timeEnd;
+        
         $data = [
             'name'          => $request->nameStore,
             'address'       => $request->addressStore,
             'phone_number'  => $request->telStore,
             'email'         => $request->emailStore,
             'city_id'       => 1,
-            'schedule'      => $schedule
+            'schedule_end'  => $request->timeEnd,
+            'schedule_start'=> $request->timeStart,
         ];
 
         $query = Store::create($data);
@@ -106,7 +107,9 @@ class StoresController extends Controller
             'nameStore'     => 'required',
             'addressStore'  => 'required',
             'emailStore'    => 'required|regex:/(.+)@(.+)\.(.+)/i',
-            'telStore'      => 'required|numeric|min:6'
+            'telStore'      => 'required|numeric|min:6',
+            'timeStart'     => 'required|max:5',
+            'timeEnd'       => 'required|max:5'
         ]);
 
         $tienda = Store::find($id);
@@ -115,6 +118,8 @@ class StoresController extends Controller
         $tienda->address      = $request->addressStore;
         $tienda->email        = $request->emailStore;
         $tienda->phone_number = $request->telStore;
+        $tienda->schedule_end  = $request->timeEnd;
+        $tienda->schedule_start= $request->timeStart;
 
         $tienda->save();
         return redirect('/stores');

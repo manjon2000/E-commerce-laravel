@@ -25,7 +25,8 @@
                     <th>Address</th>
                     <th>Phone number</th>
                     <th>email</th>
-                    <th>schedule</th>
+                    <th>schedule end</th>
+                    <th>schedule start</th>
                     <th>Acciones</th>
                     
                 </tr>
@@ -41,7 +42,8 @@
                     <td>{{$tienda->address}}</td>
                     <td>{{$tienda->phone_number	}}</td>
                     <td>{{$tienda->email}}</td>
-                    <td>{{$tienda->schedule}}</td>
+                    <td>{{$tienda->schedule_end}}</td>
+                    <td>{{$tienda->schedule_start}}</td>
                     <td >
                         {{-- <a class="btn btn-primary w-100 mb-3" href=""><i class="fas fa-info-circle"></i></a> --}}
                         <a class="btn btn-secondary w-100 mb-3" href="{{ route('stores.edit', ['store' => $tienda->id]) }}"><i class="fas fa-edit"></i></a>

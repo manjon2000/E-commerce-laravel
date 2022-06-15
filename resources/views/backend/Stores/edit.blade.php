@@ -62,9 +62,9 @@
 
                 
 
-                {{-- <div class="mb-3">
+                <div class="mb-3">
                     <label for="" class="form-label">Horario de la tienda (Inicio)</label>
-                    <input type="time" placeholder="+34" class="form-control" name="timeStart">
+                    <input type="time" value="{{$store->schedule_start}}" placeholder="+34" class="form-control" name="timeStart">
                 </div>
                 @error('timeStart')
                     <div class="alert alert-danger w-25 text-center shadow">
@@ -74,13 +74,13 @@
                 
                 <div class="mb-3">
                     <label for="" class="form-label">Horario de la tienda (Fin)</label>
-                    <input type="time" placeholder="+34" class="form-control" name="timeEnd">
+                    <input type="time" value="{{$store->schedule_end}}" placeholder="+34" class="form-control" name="timeEnd">
                 </div>
                 @error('timeEnd')
                     <div class="alert alert-danger w-25 text-center shadow">
                         El campo es requerido, tiene que contener maximo  5 digitos.
                     </div>
-                @enderror --}}
+                @enderror 
 
                 <div class="mb-3 mt-3">
                     <button type="submit" class="btn btn-outline-primary px-5 w-50">Crear tienda</button>
