@@ -23,6 +23,8 @@
         "create"=>"Create",
         "return"=>"Return",
         "tools"=>"Outils",
+        "name_inferior"=>"Sous-dimensionné",
+        "name_superior"=>"Taille supérieure",
         ""=>"",
     ];
 ?>

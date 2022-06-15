@@ -24,6 +24,8 @@
         "return"=>"Volver",
 
         "tools"=>"Herramientas",
+        "name_inferior"=>"Talla inferior",
+        "name_superior"=>"Talla superior",
         ""=>"",
     ];
 ?>
