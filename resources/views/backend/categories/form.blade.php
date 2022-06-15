@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <div class="container bg-white p-3">
+    <div class="card card-body p-3">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -47,7 +47,7 @@
                 <img src='{{ asset('images/' . $category->image_category) }}' width="100px">
             </div>
             <div class="mb-3">
-                {!! Form::submit(__("web.create"), ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit(__("web.update"), ['class' => 'btn btn-primary']) !!}
             </div>
 
             {!! Form::close() !!}
