@@ -49,13 +49,12 @@
                     <td>{{ $category->translate('fr')->description }}</td>
                     <td><img src="{{ asset('images/' . $category->image_category) }}" alt="" width="100px"></td>
                     <td>
-                        <a href="{{ route('categories.show', ['category' => $category->id]) }}"><button
-                                class="btn btn-primary">{{ __('web.detail') }}</button></a>
-                        <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button
-                                class="btn btn-secondary">{{ __('web.edit') }}</button></a>
+                        <a class="btn btn-primary" href="{{ route('categories.show', ['category' => $category->id]) }}"><i class="fas fa-info-circle"></i></a>
+                        <a class="btn btn-secondary" href="{{ route('categories.edit', ['category' => $category->id]) }}"><i class="fas fa-edit"></i></a>
                         {!! Form::open(['url' => route('categories.destroy', ['category' => $category->id]), 'method' => 'POST']) !!}
                         @csrf
                         @method('DELETE')
+                        
                         {!! Form::submit(__('web.delete'), ['class' => 'btn btn-danger']) !!}
 
                         {!! Form::close() !!}
