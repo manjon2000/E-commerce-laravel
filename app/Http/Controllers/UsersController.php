@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\City;
 use App\Models\Country;
-
+use Auth;
 class UsersController extends Controller
 {
     /**
@@ -90,11 +90,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'username' => 'required',
+            'name' => 'required',
             'first_name' => 'required',
             "last_name" => 'required|max:255',
             "address" => 'required|max:255',
-            "city_id" => 'required|max:255',
+            "city" => 'required|max:255',
         ]);
         $data=User::find($id);
         $data->first_name = $request->first_name;
@@ -116,5 +116,19 @@ class UsersController extends Controller
         $data=User::find($id);
         $data->delete();
         return redirect('/profiles');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $user=Auth::user();
+        $countries=Country::get();
+        return view('backend.users.edit')
+        -> with ('user', $user)
+        -> with ('countries', $countries);
     }
 }

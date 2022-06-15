@@ -255,8 +255,8 @@ return [
         // ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'profiles',
+            'text' => 'Your Profile',
+            'url'  => 'profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -287,6 +287,11 @@ return [
                     'text'    => 'sizes',
                     'url'     => 'sizes',
                     'icon'    => 'fas fa-tshirt',
+                ],
+                [
+                    'text' => 'User Profiles',
+                    'url'  => 'profiles',
+                    'icon' => 'fas fa-fw fa-user',
                 ],
             ],
         ],
