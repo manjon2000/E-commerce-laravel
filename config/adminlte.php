@@ -288,6 +288,11 @@ return [
                     'url'     => 'sizes',
                     'icon'    => 'fas fa-tshirt',
                 ],
+                [
+                    'text'    => 'stores',
+                    'url'     => 'stores',
+                    'icon'    => 'fas fa-store',
+                ],
             ],
         ],
         
