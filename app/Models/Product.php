@@ -11,5 +11,7 @@ class Product extends Model implements TranslatableContract
     use Translatable;
     protected $fillable = ['name' , 'price', 'image_product', 'category_id'];
     protected $translatedAttributes=["description"];
-
+    public function inventories(){
+        return $this->belongsTo('App\Models\Inventory', 'id', 'product_id');
+    }
 }

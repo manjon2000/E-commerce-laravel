@@ -25,6 +25,11 @@
         "tools"=>"Tools",
         "name_inferior"=>"Bottom size",
         "name_superior"=>"Top size",
+        "store"=>"Store",
+        "quantity"=>"Quantity",
+        "product"=>"Product",
+        "inventory"=>"Inventory",
+        ""=>"",
         ""=>"",
         ""=>"",
     ];

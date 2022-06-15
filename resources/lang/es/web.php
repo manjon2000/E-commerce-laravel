@@ -26,6 +26,11 @@
         "tools"=>"Herramientas",
         "name_inferior"=>"Talla inferior",
         "name_superior"=>"Talla superior",
+
+        "store"=>"Boutique",
+        "quantity"=>"Quantité",
+        "product"=>"Produit",
+        "inventory"=>"Inventaire",
         ""=>"",
     ];
 ?>
