@@ -4,7 +4,7 @@
 
 
 @section('content_header')
-    <h1>{{__("web.sizes")}} | {{__("web.create")}}</h1>
+    <h1>{{__("web.size")}} | {{__("web.create")}}</h1>
 @stop
 
 @section('content')

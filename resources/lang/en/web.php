@@ -25,7 +25,7 @@
         "tools"=>"Tools",
         "name_inferior"=>"Bottom size",
         "name_superior"=>"Top size",
-        ""=>"",
+        "size"=>"Size",
         ""=>"",
     ];
 ?>

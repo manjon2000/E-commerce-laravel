@@ -3,7 +3,7 @@
 @section('title', 'E-commerce - Categories')
 
 @section('content_header')
-    <h1>{{ __('web.sizes') }} | {{ __('web.list') }}</h1>
+    <h1>{{ __('web.size') }} | {{ __('web.list') }}</h1>
 @stop
 
 @section('content')
