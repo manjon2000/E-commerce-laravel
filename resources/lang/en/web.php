@@ -12,6 +12,11 @@
         'modificate_button'=>'Modificate data',
         'edit_profile'=>'Edit profile',
         'not-data'=>"There is no data to show.",
+        'products_title'=>'My products',
+        'name_product'=>'Name of product: ',
+        'price_product'=>'Price of product:',
+        'principal_image_products'=>'Main image of product: ',
+        'name_category_product'=>'Category name of product:',
     
         "name"=>"Name",
         "categories"=>"Categories",
