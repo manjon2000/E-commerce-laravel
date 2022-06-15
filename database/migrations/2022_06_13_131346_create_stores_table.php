@@ -20,7 +20,8 @@ class CreateStoresTable extends Migration
             $table->integer('phone_number');
             $table->string('email');
             $table->integer('city_id');
-            $table->string('schedule');
+            $table->string('schedule_start');
+            $table->string('schedule_end');
             $table->timestamps();
         });
     }
