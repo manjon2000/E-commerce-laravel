@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <div class="container bg-white p-3">
+    <div class="card card-body p-3">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
