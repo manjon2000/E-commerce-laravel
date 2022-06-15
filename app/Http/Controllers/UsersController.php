@@ -17,9 +17,15 @@ class UsersController extends Controller
     public function index()
     {
         $users=User::get();
-        foreach($users as $user){
-        $cities=City::where('id', '=', $user->city_id)->get();
-        $countries=Country::where('id', '=', $user->cities->country_id)->get();}
+        foreach($users as $user)
+        {
+        if(is_null($user->city_id)){
+            $cities=City::get();
+            $countries=Country::get();
+        } else{
+            $cities=City::where('id', '=', $user->city_id)->get();
+            $countries=Country::where('id', '=', $user->cities->country_id)->get();
+        }}
         return view('backend.users.index')
         -> with ('countries', $countries)
         -> with ('cities', $cities)
