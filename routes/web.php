@@ -37,6 +37,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         //Ruta de Usuarios
         Route::resource('profiles', UsersController::class);
+        //Ruta de productos
+        Route::resource('products', 'ProductsController');
         //ruta sizes en admin
         Route::resource('sizes', SizesController::class);
 
