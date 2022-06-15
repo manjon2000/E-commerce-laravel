@@ -42,10 +42,10 @@
                                 <i class="fas fa-info-circle"></i>
                                 
                             </button></a>
-                        <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button class="btn btn-secondary w-100 mb-3">
-                            {{-- {{__("web.edit")}} --}}
-                            <i class="fas fa-edit"></i>
-                        </button></a>
+                            <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button class="btn btn-secondary w-100 mb-3">
+                                {{-- {{__("web.edit")}} --}}
+                                <i class="fas fa-edit"></i>
+                            </button></a>
                         {!! Form::open(['url' => route('categories.destroy',['category' => $category->id]), 'method' => 'POST']) !!}
                         @csrf
                         @method('DELETE')

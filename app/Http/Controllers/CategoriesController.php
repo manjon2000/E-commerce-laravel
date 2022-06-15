@@ -46,6 +46,7 @@ class CategoriesController extends Controller
             "description_en" => 'required|max:255',
             "description_fr" => 'required|max:255',
         ]);
+        
         $imageName = time() . '.' . $request->image_category->extension();
 
         $request->image_category->move(public_path('images'), $imageName);

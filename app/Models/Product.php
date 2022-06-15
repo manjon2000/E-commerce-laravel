@@ -16,6 +16,6 @@ class Product extends Model implements TranslatableContract
         return $this->hasMany('App\Models\ProductImage', 'product_id', 'id');
     }
     public function categories(){
-        return $this->belngsTo('App\Models\Category', 'category_id','id');
+        return $this->belongsTo('App\Models\Category', 'category_id','id');
     }
 }
