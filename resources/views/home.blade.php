@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <p class="card card-body">Ecommerce Laravel Project welcome:)</p>
+    <p class="card card-body">test</p>
 @stop
 
 @section('css')

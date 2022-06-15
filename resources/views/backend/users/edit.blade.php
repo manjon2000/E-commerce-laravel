@@ -16,6 +16,15 @@
     </div>
     <!-- CONTENT INFORMATION-->
     @if (Auth::User())
+    @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
         {!! Form::model($user, ['method' => 'PUT', 'url' => '/profiles/' . $user->id]) !!}
         <div class="container border border-dark d-flex justify-content-center">
             <div class="row">
@@ -73,11 +82,17 @@
                 <div class="mb-3 col-6">
                     <select id="country" name="country" class="form-control text-center country_value">
                         @foreach ($countries as $country)
-                            @if ($country->id == $user->cities->countries->id)
-                                <option value="{{ $country->id }}" selected="selected">{{ $country->name }}</option>
+                            @if (isset($user->cities->countries))
+                            
+                                @if ($country->id == $user->cities->countries->id)
+                                    <option value="{{ $country->id }}" selected="selected">{{ $country->name }}</option>
+                                @else
+                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                @endif
                             @else
                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                             @endif
+
                         @endforeach
                     </select>
 
@@ -116,12 +131,18 @@
         $(function() {
             $(document).ready(function() {
                 generateSelectCountry();
-                
+
             });
+
             function generateSelectCountry() {
                 var country = document.getElementById("country");
                 var dades = null;
-                var selected= {{$user->cities->id}};
+                var selected =
+                    @if (isset($user->cities))
+                    {{ $user->cities->id }}
+                    @else
+                    null
+                    @endif;
                 var select = document.getElementById("city");
                 console.log(select)
                 select.innerHTML = '';
@@ -136,9 +157,9 @@
                         option.value = dada["id"];
                         option.text = dada["name"];
                         console.log(country.value)
-                        if(dada["country_id"]==country.value && selected==dada["id"]){
+                        if (dada["country_id"] == country.value && selected == dada["id"]) {
                             option.setAttribute('selected', 'selected');
-                            
+
                         }
                         select.appendChild(option);
                     }
