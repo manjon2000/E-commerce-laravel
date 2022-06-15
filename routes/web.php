@@ -48,9 +48,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     });
 
-
-
-
     //******************UTILES********************* */
 
     Route::get('/cities/{country}', 'ToolsController@cities')->name('tools.cities');

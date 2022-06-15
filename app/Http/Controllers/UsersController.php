@@ -17,18 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $users=User::get();
-        foreach($users as $user)
-        {
-        if(is_null($user->city_id)){
-            $cities=City::get();
-            $countries=Country::get();
-        } else{
-            $cities=City::where('id', '=', $user->city_id)->get();
-            $countries=Country::where('id', '=', $user->cities->country_id)->get();
-        }}
         return view('backend.users.index')
-        -> with ('countries', $countries)
-        -> with ('cities', $cities)
         -> with ('users', $users);
     }
 
@@ -61,7 +50,18 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $users=User::get();
+        foreach($users as $user)
+        {
+        if(is_null($user->city_id)){
+            $cities=City::get();
+            $countries=Country::get();
+        } else{
+            $cities=City::where('id', '=', $user->city_id)->get();
+            $countries=Country::where('id', '=', $user->cities->country_id)->get();
+        }}
+        return view('backend.users.detail')
+        -> with ('user', $user);
     }
 
     /**
@@ -89,6 +89,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'username' => 'required',
+            'first_name' => 'required',
+            "last_name" => 'required|max:255',
+            "address" => 'required|max:255',
+            "city_id" => 'required|max:255',
+        ]);
         $data=User::find($id);
         $data->first_name = $request->first_name;
         $data->last_name = $request->last_name;
@@ -106,6 +113,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=User::find($id);
+        $data->delete();
+        return redirect('/profiles');
     }
 }
