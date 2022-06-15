@@ -11,6 +11,7 @@ return [
     'administration'                => 'La gestion',
     'categories'                    => 'Catégories',
     'products'                      => 'Produits',
+    'stores'                         => 'Magasins',
     'inventory'                     => 'Inventaire',
     'sizes'                         => 'Dimensionnement',
     'labels'                        => 'ÉTIQUETTES',

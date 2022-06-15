@@ -41,10 +41,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::resource('products', 'ProductsController');
         //ruta sizes en admin
         Route::resource('sizes', SizesController::class);
+        Route::resource('inventories', InventoriesController::class);
 
         // Ruta de store en admin
         Route::resource('stores',StoresController::class);
 
     });
+
+    //******************UTILES********************* */
+
+    Route::get('/cities/{country}', 'ToolsController@cities')->name('tools.cities');
+
 
 });

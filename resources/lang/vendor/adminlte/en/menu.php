@@ -12,6 +12,7 @@ return [
     'categories'                    => 'Categories',
     'products'                      => 'Products',
     'inventory'                     => 'Inventory',
+    'stores'                         => 'Stores',
     'sizes'                         => 'Sizes',
     'labels'                        => 'LABELS',
     'important'                     => 'Important',

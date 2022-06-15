@@ -31,6 +31,12 @@
         "name_inferior"=>"Bottom size",
         "name_superior"=>"Top size",
         "size"=>"Size",
+        "store"=>"Store",
+        "quantity"=>"Quantity",
+        "product"=>"Product",
+        "inventory"=>"Inventory",
+        ""=>"",
+        ""=>"",
         ""=>"",
     ];
 ?>

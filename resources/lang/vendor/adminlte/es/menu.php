@@ -13,6 +13,7 @@ return [
     'products'                      => 'Productos',
     'inventory'                     => 'Inventario',
     'sizes'                         => 'Tallaje',
+    'stores'                         => 'Tiendas',
     'labels'                        => 'ETIQUETAS',
     'important'                     => 'Importante',
     'warning'                       => 'Advertencia',
