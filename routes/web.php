@@ -40,6 +40,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //ruta sizes en admin
         Route::resource('sizes', SizesController::class);
 
+        // Ruta de store en admin
+        Route::resource('stores',StoresController::class);
+
     });
 
 });
