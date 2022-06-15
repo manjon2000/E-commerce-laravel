@@ -16,24 +16,28 @@ use Illuminate\Support\Facades\Route;
 //Engloba las routas para que funcionen con traducciones estaticas
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     //***************RUTAS DEL FRONTEND*****************
-    //************************************************** 
+    //**************************************************
     Route::get('/', function () {
         return view('welcome');
     });
 
     //***************RUTAS DEL BACKEND******************
-    //************************************************** 
+    //**************************************************
 
-    //Protege las rutas de debajo con el Auth
+    //Genera las rutas de autenticacion login, register, logout...
     Auth::routes();
+    //protege las rutas de dentro
+    Route::group(['middleware' => ['auth']], function () {
 
-    //Ruta del dashboard
-    Route::get('/home', 'HomeController@index')->name('home');
+        //Ruta del dashboard
+        Route::get('/home', 'HomeController@index')->name('home');
 
-    //Ruta de categorias en admin
-    Route::resource('categories', CategoriesController::class);
+        //Ruta de categorias en admin
+        Route::resource('categories', CategoriesController::class);
 
-    //Ruta de Usuarios
-    Route::resource('profiles', 'UsersController');
+        //Ruta de Usuarios
+        Route::resource('profiles', UsersController::class);
+
+    });
 
 });
