@@ -107,7 +107,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:255',
+            'name'           => 'required|max:255',
             'image_category' => 'max:2048|mimes:jpg,jpeg,png',
             "description_es" => 'required|max:255',
             "description_en" => 'required|max:255',

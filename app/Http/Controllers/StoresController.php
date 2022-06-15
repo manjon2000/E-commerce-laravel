@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Store;
+use App\Models\City;
+use App\Models\Country;
 
 class StoresController extends Controller
 {
@@ -13,7 +16,9 @@ class StoresController extends Controller
      */
     public function index()
     {
-        //
+        $tiendas = Store::get();
+        return view('backend.stores.index')
+        -> with('tiendas',$tiendas);
     }
 
     /**
@@ -23,7 +28,13 @@ class StoresController extends Controller
      */
     public function create()
     {
-        //
+        $citiesfrances=City::where('country_id','=', 2)->get();
+        $countries=Country::get();
+        $citiesspains=City::where('country_id', '=', 1)->get();
+        return view('backend.stores.create')
+        -> with ('citiesfrances', $citiesfrances)
+        -> with ('countries', $countries)
+        -> with ('citiesspains', $citiesspains);;
     }
 
     /**
@@ -34,7 +45,28 @@ class StoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nameStore'     => 'required',
+            'addressStore'  => 'required',
+            'emailStore'    => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            'telStore'      => 'required|numeric|min:6',
+            'timeStart'     => 'required|max:5',
+            'timeEnd'       => 'required|max:5'
+        ]);
+
+        $schedule = $request->timeStart .','. $request->timeEnd;
+        $data = [
+            'name'          => $request->nameStore,
+            'address'       => $request->addressStore,
+            'phone_number'  => $request->telStore,
+            'email'         => $request->emailStore,
+            'city_id'       => 1,
+            'schedule'      => $schedule
+        ];
+
+        $query = Store::create($data);
+
+        return redirect('/stores');
     }
 
     /**
@@ -56,7 +88,9 @@ class StoresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tienda = Store::where('id', $id)->get();
+        return view('backend.stores.edit')
+        -> with('tienda',$tienda);
     }
 
     /**
@@ -68,7 +102,22 @@ class StoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nameStore'     => 'required',
+            'addressStore'  => 'required',
+            'emailStore'    => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            'telStore'      => 'required|numeric|min:6'
+        ]);
+
+        $tienda = Store::find($id);
+
+        $tienda->name         = $request->nameStore;
+        $tienda->address      = $request->addressStore;
+        $tienda->email        = $request->emailStore;
+        $tienda->phone_number = $request->telStore;
+
+        $tienda->save();
+        return redirect('/stores');
     }
 
     /**
@@ -79,6 +128,8 @@ class StoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $store = Store::find($id);
+        $store->delete();
+        return redirect('/stores');
     }
 }
