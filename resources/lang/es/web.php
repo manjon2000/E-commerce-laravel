@@ -12,6 +12,11 @@
         'modificate_button'=>'Modificar los datos',
         'edit_profile'=>'Editar el perfil',
         'not-data'=>"No hay datos que mostrar.",
+        'products_title'=>'Mis productos',
+        'name_product'=>'Nombre del producto: ',
+        'price_product'=>'Precio del producto:',
+        'principal_image_products'=>'Imagen principal del producto: ',
+        'name_category_product'=>'Nombre de la categoria del producto:',
 
         "name"=>"Nombre",
         "categories"=>"Categorias",
