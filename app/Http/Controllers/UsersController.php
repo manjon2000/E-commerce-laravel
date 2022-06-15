@@ -17,18 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $users=User::get();
-        foreach($users as $user)
-        {
-        if(is_null($user->city_id)){
-            $cities=City::get();
-            $countries=Country::get();
-        } else{
-            $cities=City::where('id', '=', $user->city_id)->get();
-            $countries=Country::where('id', '=', $user->cities->country_id)->get();
-        }}
         return view('backend.users.index')
-        -> with ('countries', $countries)
-        -> with ('cities', $cities)
         -> with ('users', $users);
     }
 
@@ -61,7 +50,18 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $users=User::get();
+        foreach($users as $user)
+        {
+        if(is_null($user->city_id)){
+            $cities=City::get();
+            $countries=Country::get();
+        } else{
+            $cities=City::where('id', '=', $user->city_id)->get();
+            $countries=Country::where('id', '=', $user->cities->country_id)->get();
+        }}
+        return view('backend.users.detail')
+        -> with ('user', $user);
     }
 
     /**
@@ -72,15 +72,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $users=User::get();
-        $citiesfrances=City::where('country_id','=', 2)->get();
+        $user=User::find($id);
         $countries=Country::get();
-        $citiesspains=City::where('country_id', '=', 1)->get();
         return view('backend.users.edit')
-        -> with ('users', $users)
-        -> with ('citiesfrances', $citiesfrances)
-        -> with ('countries', $countries)
-        -> with ('citiesspains', $citiesspains);
+        -> with ('user', $user)
+        -> with ('countries', $countries);
 
     }
 
@@ -93,17 +89,19 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'username' => 'required',
+            'first_name' => 'required',
+            "last_name" => 'required|max:255',
+            "address" => 'required|max:255',
+            "city_id" => 'required|max:255',
+        ]);
         $data=User::find($id);
-        $data_es=User::find($id);
-        $data_fr=User::find($id);
         $data->first_name = $request->first_name;
         $data->last_name = $request->last_name;
         $data->address = $request->address;
-        $data_es->city_id = $request->city_es;
-        $data_fr->city_id = $request->city_fr;
+        $data->city_id = $request->city;
         $data->save();
-        $data_es->save();
-        $data_fr->save();
         return redirect('/profiles');
     }
 
@@ -115,6 +113,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=User::find($id);
+        $data->delete();
+        return redirect('/profiles');
     }
 }

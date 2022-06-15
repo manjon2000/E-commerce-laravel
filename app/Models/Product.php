@@ -17,5 +17,12 @@ class Product extends Model implements TranslatableContract
     }
     public function categories(){
         return $this->belongsTo('App\Models\Category', 'category_id','id');
+<<<<<<< HEAD
+=======
+
+    }
+    public function inventories(){
+        return $this->belongsTo('App\Models\Inventory', 'id', 'product_id');
+>>>>>>> main
     }
 }

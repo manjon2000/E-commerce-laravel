@@ -32,7 +32,10 @@
         "name_inferior"=>"Talla inferior",
         "name_superior"=>"Talla superior",
         "size"=>"Talla",
-
+        "store"=>"Boutique",
+        "quantity"=>"Quantité",
+        "product"=>"Produit",
+        "inventory"=>"Inventaire",
         ""=>"",
     ];
 ?>

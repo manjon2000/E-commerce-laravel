@@ -280,7 +280,7 @@ return [
                 ],
                 [
                     'text' => 'inventory',
-                    'url'  => 'inventory',
+                    'url'  => 'inventories',
                     'icon' => 'fas fa-box',
                 ],
                 [
