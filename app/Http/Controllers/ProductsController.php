@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Models\City;
-use App\Models\Country;
+use App\Models\Product;
+use App\Models\ProductImage;
 
-class UsersController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,20 +15,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::get();
-        foreach($users as $user)
-        {
-        if(is_null($user->city_id)){
-            $cities=City::get();
-            $countries=Country::get();
-        } else{
-            $cities=City::where('id', '=', $user->city_id)->get();
-            $countries=Country::where('id', '=', $user->cities->country_id)->get();
-        }}
-        return view('backend.users.index')
-        -> with ('countries', $countries)
-        -> with ('cities', $cities)
-        -> with ('users', $users);
+        $products=Product::get();
+        return view('backend.products.index')
+        ->with('products', $products);
     }
 
     /**
@@ -72,12 +60,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user=User::find($id);
-        $countries=Country::get();
-        return view('backend.users.edit')
-        -> with ('user', $user)
-        -> with ('countries', $countries);
-
+        //
     }
 
     /**
@@ -89,13 +72,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=User::find($id);
-        $data->first_name = $request->first_name;
-        $data->last_name = $request->last_name;
-        $data->address = $request->address;
-        $data->city_id = $request->city;
-        $data->save();
-        return redirect('/profiles');
+        //
     }
 
     /**

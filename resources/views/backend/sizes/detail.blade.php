@@ -3,7 +3,7 @@
 @section('title', 'E-commerce - Categories')
 
 @section('content_header')
-    <h1>{{ __('web.categories') }} | {{ __('web.list') }}</h1>
+    <h1>{{ __('web.size') }} | {{ __('web.list') }}</h1>
 @stop
 
 @section('content')
@@ -13,8 +13,8 @@
     <div class="card card-body p-3">
         <div class="mb-5">
             <a class="btn btn-success px-5 shadow rounded"
-                href="{{ route('categories.create') }}">{{ __('web.create') }}</a>
-            <a class="btn btn-primary px-5 shadow rounded" href="{{ route('categories.index') }}">{{ __('web.return') }}</a>
+                href="{{ route('sizes.create') }}">{{ __('web.create') }}</a>
+            <a class="btn btn-primary px-5 shadow rounded" href="{{ route('sizes.index') }}">{{ __('web.return') }}</a>
         </div>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -35,23 +35,17 @@
 
         <table class="table table-light table-striped border border-light shadow">
             <tr>
-                <th>{{ __('web.name') }}</th>
-                <th>ES</th>
-                <th>EN</th>
-                <th>FR</th>
-                <th>img</th>
+                <th>{{__("web.name_inferior")}}</th>
+                <th>{{__("web.name_superior")}}</th>
                 <th>{{ __('web.tools') }}</th>
             </tr>
                 <tr>
-                    <td>{{ $category->name }}</td>
-                    <td>{{ $category->translate('es')->description }}</td>
-                    <td>{{ $category->translate('en')->description }}</td>
-                    <td>{{ $category->translate('fr')->description }}</td>
-                    <td><img src="{{ asset('images/' . $category->image_category) }}" alt="" width="100px"></td>
+                    <td>{{ $size->name_inferior }}</td>
+                    <td>{{ $size->name_superior }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('categories.show', ['category' => $category->id]) }}"><i class="fas fa-info-circle"></i></a>
-                        <a class="btn btn-secondary" href="{{ route('categories.edit', ['category' => $category->id]) }}"><i class="fas fa-edit"></i></a>
-                        {!! Form::open(['url' => route('categories.destroy', ['category' => $category->id]), 'method' => 'POST']) !!}
+                        <a class="btn btn-primary" href="{{ route('sizes.show', ['size' => $size->id]) }}"><i class="fas fa-info-circle"></i></a>
+                        <a class="btn btn-secondary" href="{{ route('sizes.edit', ['size' => $size->id]) }}"><i class="fas fa-edit"></i></a>
+                        {!! Form::open(['url' => route('sizes.destroy', ['size' => $size->id]), 'method' => 'POST']) !!}
                         @csrf
                         @method('DELETE')
                         

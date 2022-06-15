@@ -12,6 +12,10 @@
         'modificate_button'=>'Modifier les données',
         'edit_profile'=>'Modifier le profil',
         'not-data'=>"Il n'y a pas de données à afficher.",
+        'products_title'=>'Mes produits',
+        'name_product'=>'Nom du produit: ',
+        'price_product'=>'Prix du produit:',
+        'principal_image_products'=>'Image principale du produit: ',
 
         "name"=>"Nom",
         "categories"=>"Catégories",
@@ -23,6 +27,10 @@
         "create"=>"Create",
         "return"=>"Return",
         "tools"=>"Outils",
+        "name_inferior"=>"Sous-dimensionné",
+        "name_superior"=>"Taille supérieure",
+        "size"=>"Taille",
+
         ""=>"",
     ];
 ?>

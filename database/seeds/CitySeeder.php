@@ -14,7 +14,6 @@ class CitySeeder extends Seeder
     {
         $faker_es = Faker\Factory::create('es_ES');
         $faker_fr = Faker\Factory::create('fr_FR');
-
         for($i=0;$i<100;$i++){
             City::create([
                 'name'=>$faker_es->city,
