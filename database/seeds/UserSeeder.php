@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
         User::create([
             'name'     => 'admin',
             'email'    => 'admin@admin.com',
+            'is_admin'    => 1,
             'password' => bcrypt('1234'),
         ]);
         $faker_es = Faker\Factory::create('es_ES');
