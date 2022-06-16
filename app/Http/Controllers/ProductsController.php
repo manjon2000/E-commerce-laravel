@@ -126,12 +126,5 @@ class ProductsController extends Controller
         $product->delete();
         return redirect('/products');
     }
-    public function updateimagesindex($id)
-    {
-        return view('backend.products.imgsecondary');
-    }
-    public function updateimages()
-    {
-        
-    }
+
 }

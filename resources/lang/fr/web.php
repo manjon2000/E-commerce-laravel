@@ -17,6 +17,9 @@
         'user_admins'=>'Afficher tous les utilisateurs',
         'price_product'=>'Prix du produit:',
         'principal_image_products'=>'Image principale du produit: ',
+        'add_image'=>'Ajouter image',
+        'convert_main_image'=>'Convertir en image principale',
+        'user_name'=>"Nom d'utilisateur",
 
         "name"=>"Nom",
         "categories"=>"Catégories",

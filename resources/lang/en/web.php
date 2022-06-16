@@ -18,6 +18,9 @@
         'principal_image_products'=>'Main image of product: ',
         'name_category_product'=>'Category name of product:',
         'user_admins'=>'View all users',
+        'add_image'=>'Add image',
+        'convert_main_image'=>'Convert to main image',
+        'user_name'=>'User name',
     
         "name"=>"Name",
         "categories"=>"Categories",

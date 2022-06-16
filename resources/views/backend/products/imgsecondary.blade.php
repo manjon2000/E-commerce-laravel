@@ -15,15 +15,16 @@
     </div>
 </div>
 <!-- CONTENT INFORMATION-->
-{!!Form::model($images, ['method'=>'PUT', 'url'=>'/images/'.$image->id,'enctype'=>'multipart/form-data'])!!}
+{!!Form::open(['method'=>'POST', 'url'=>'/images2' , 'enctype'=>'multipart/form-data'])!!}
 <div class="container border border-dark d-flex justify-content-center">
     <div class="row">
         <!-- Imagen principal -->
         <div class="mb-3 col-6 ">
-            <label for="main_image_product" class="form-label ml-5">{{__('web.principal_image_products')}}</label>
+            <label for="main_image_product" class="form-label ml-5">{{__('web.add_image')}}</label>
         </div>
         <div class="mb-3 col-6">
             <input class="form-label" type="file" name="main_image_product">
+            <input type="hidden" name="id_product" value="{{$images->id}}">
         </div>
     </div>
 </div>
@@ -32,8 +33,7 @@
 <div class="container border border-dark d-flex justify-content-center rounded-bottom shadow-lg p-3 bg-white">
     <div class="row">
         <div class="mb-3 mt-3 col-12">
-            <a href="{{route('products.index')}}" class="btn btn-dark btn-lg">{{__('web.return_title')}}</a>
-            <input class="btn btn-dark btn-lg" type="submit" value="{{__('web.update')}}">
+            <input class="btn btn-dark btn-lg" type="submit" value="{{__('web.create')}}">
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductImage extends Model
 {
-    protected $table='products_images';
+    protected $table='product_images';
     protected $fillable = ['product_id', 'image_url'];
     public function productsimages(){
         return $this->belongsTo('App\Models\Product', 'product_id', 'id');

@@ -22,13 +22,13 @@ class CreateProductsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        Schema::create('products_images', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->string('image_url');
+            $table->integer('product_id')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
-        Schema::create('products_favorites', function (Blueprint $table) {
+        Schema::create('product_favorites', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('product_id');
