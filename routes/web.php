@@ -31,15 +31,28 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         //Ruta del dashboard
         Route::get('/home', 'HomeController@index')->name('home');
+        Route::middleware(['can:is_admin'])->group(function () {
+            //Ruta de categorias en admin
+            Route::resource('categories', CategoriesController::class);
 
-        //Ruta de categorias en admin
-        Route::resource('categories', CategoriesController::class);
+            //Ruta de Usuarios admin
+            Route::resource('profiles', UsersController::class);
+            //Ruta de productos
+            Route::resource('products', 'ProductsController');
+            Route::get('/images/{image}/edit', 'ProductsController@updateimagesindex')->name('updateimageindex');
+            Route::put('/images/{image}', 'ProductsController@updateimages')->name('updateimage');
+            //ruta sizes en admin
+            Route::resource('sizes', SizesController::class);
+            Route::resource('inventories', InventoriesController::class);
 
-        //Ruta de Usuarios
-        Route::resource('profiles', UsersController::class);
+            // Ruta de store en admin
+            Route::resource('stores', StoresController::class);
+
+        });
 
         //ruta per usuari no admin
         Route::get('profile', "UsersController@profile");
+<<<<<<< HEAD
         //Ruta de productos
         Route::resource('products', 'ProductsController');
         Route::get('/images/create/{id}', 'Controller@createimagesindex')->name('createimageindex');
@@ -47,11 +60,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //ruta sizes en admin
         Route::resource('sizes', SizesController::class);
         Route::resource('inventories', InventoriesController::class);
+=======
+>>>>>>> main
 
-        // Ruta de store en admin
-        Route::resource('stores',StoresController::class);
+        //******************UTILES********************* */
+
+        Route::get('/cities/{country}', 'ToolsController@cities')->name('tools.cities');
 
     });
+<<<<<<< HEAD
 
     //******************UTILES********************* */
 
@@ -59,4 +76,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::post('/imageschanges', 'Controller@updateimage')->name('updateimage');
 
 
+=======
+>>>>>>> main
 });
