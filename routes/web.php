@@ -42,6 +42,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::get('profile', "UsersController@profile");
         //Ruta de productos
         Route::resource('products', 'ProductsController');
+        Route::get('/images/{image}/edit', 'ProductsController@updateimagesindex')->name('updateimageindex');
+        Route::put('/images/{image}', 'ProductsController@updateimages')->name('updateimage');
         //ruta sizes en admin
         Route::resource('sizes', SizesController::class);
         Route::resource('inventories', InventoriesController::class);
