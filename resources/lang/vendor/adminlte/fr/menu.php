@@ -7,6 +7,7 @@ return [
     'pages'                         => 'Page',
     'account_settings'              => 'PARAMÈTRES DU COMPTE',
     'profile'                       => 'Mon profil',
+    'profile_admin'                 => 'Utilisateurs',
     'shopping_cart'                 => 'Panier',
     'administration'                => 'La gestion',
     'categories'                    => 'Catégories',

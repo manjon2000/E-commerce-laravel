@@ -114,8 +114,11 @@
         <div class="container border border-dark d-flex justify-content-center rounded-bottom shadow-lg p-3 bg-white">
             <div class="row">
                 <div class="mb-3 mt-3 col-12">
-                    <a href="{{ route('profiles.index') }}"
-                        class="btn btn-dark btn-lg">{{ __('web.return_title') }}</a>
+                    @if($user->is_admin == 0)
+                        
+                    @else
+                        <a href="{{ url('/profiles') }}" class="btn btn-dark btn-lg">{{ __('web.user_admins') }}</a>    
+                    @endif
                     <input class="btn btn-dark btn-lg" type="submit" value="{{ __('web.modificate_button') }}">
 
                 </div>

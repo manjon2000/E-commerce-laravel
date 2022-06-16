@@ -14,6 +14,7 @@
         'not-data'=>"Il n'y a pas de données à afficher.",
         'products_title'=>'Mes produits',
         'name_product'=>'Nom du produit: ',
+        'user_admins'=>'Afficher tous les utilisateurs',
         'price_product'=>'Prix du produit:',
         'principal_image_products'=>'Image principale du produit: ',
 

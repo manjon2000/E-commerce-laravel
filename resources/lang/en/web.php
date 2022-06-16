@@ -17,6 +17,7 @@
         'price_product'=>'Price of product:',
         'principal_image_products'=>'Main image of product: ',
         'name_category_product'=>'Category name of product:',
+        'user_admins'=>'View all users',
     
         "name"=>"Name",
         "categories"=>"Categories",

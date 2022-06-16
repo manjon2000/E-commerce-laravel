@@ -44,7 +44,6 @@
             </tr>
             @foreach ($categories as $category)
                 <tr>
-<<<<<<< HEAD
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->translate('es')->description }}</td>
                     <td>{{ $category->translate('en')->description }}</td>
@@ -54,33 +53,6 @@
                         <a class="btn btn-primary w-100 mb-3" href="{{ route('categories.show', ['category' => $category->id]) }}"><i class="fas fa-info-circle"></i></a>
                         <a class="btn btn-secondary w-100 mb-3" href="{{ route('categories.edit', ['category' => $category->id]) }}"><i class="fas fa-edit"></i></a>
                         {!! Form::open(['url' => route('categories.destroy', ['category' => $category->id]), 'method' => 'POST']) !!}
-=======
-                    <th>{{ __("web.name")}}</th>
-                    <th>ES</th>
-                    <th>EN</th>
-                    <th>FR</th>
-                    <th>img</th>
-                    <th>{{ __("web.tools")}}</th>
-                </tr>
-                @foreach ($categories as $category)
-                    <tr>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->translate('es')->description }}</td>
-                        <td>{{ $category->translate('en')->description }}</td>
-                        <td>{{ $category->translate('fr')->description }}</td>
-                        <td><img src="{{asset("images/".$category->image_category)}}" alt="" width="50px"></td>
-                        <td>
-                            <a href="{{ route('categories.show',['category' => $category->id]) }}"><button class="btn btn-primary w-100 mb-3">
-                                {{-- {{__("web.detail")}} --}}
-                                <i class="fas fa-info-circle"></i>
-                                
-                            </button></a>
-                            <a href="{{ route('categories.edit', ['category' => $category->id]) }}"><button class="btn btn-secondary w-100 mb-3">
-                                {{-- {{__("web.edit")}} --}}
-                                <i class="fas fa-edit"></i>
-                            </button></a>
-                        {!! Form::open(['url' => route('categories.destroy',['category' => $category->id]), 'method' => 'POST']) !!}
->>>>>>> main
                         @csrf
                         @method('DELETE')
 

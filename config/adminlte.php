@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 return [
 
     /*
@@ -255,7 +255,7 @@ return [
         // ],
         ['header' => 'account_settings'],
         [
-            'text' => 'Your Profile',
+            'text' => 'profile',
             'url' => 'profile',
             'icon' => 'fas fa-fw fa-user',
         ],
@@ -266,6 +266,7 @@ return [
         ],
         [
             'text' => 'administration',
+            'can'=> 'is_admin',
             'icon' => 'fas fa-tools',
             'submenu' => [
                 [
@@ -294,7 +295,7 @@ return [
                     'icon' => 'fas fa-store',
                 ],
                 [
-                    'text' => 'User Profiles',
+                    'text' => 'profile_admin',
                     'url' => 'profiles',
                     'icon' => 'fas fa-fw fa-user',
                 ],

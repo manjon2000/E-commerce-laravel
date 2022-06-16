@@ -7,6 +7,7 @@ return [
     'pages'                         => 'Pages',
     'account_settings'              => 'ACCOUNT SETTINGS',
     'profile'                       => 'My profile',
+    'profile_admin'                 => 'Users',
     'shopping_cart'                 => 'Shopping cart',
     'administration'                => 'Administration',
     'categories'                    => 'Categories',

@@ -102,7 +102,7 @@ class UsersController extends Controller
         $data->address = $request->address;
         $data->city_id = $request->city;
         $data->save();
-        return redirect('/profiles');
+        return redirect('/profile');
     }
 
     /**
