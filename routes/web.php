@@ -35,7 +35,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //Ruta de categorias en admin
         Route::resource('categories', CategoriesController::class);
 
-        //Ruta de Usuarios
+        //Ruta de Usuarios admin
         Route::resource('profiles', UsersController::class);
 
         //ruta per usuari no admin
