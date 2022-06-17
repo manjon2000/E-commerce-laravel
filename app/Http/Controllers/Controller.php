@@ -33,7 +33,7 @@ class Controller extends BaseController
         }
 
         $imageProduct = time() . '.' .$request->main_image_product->extension();
-    
+
         $request->main_image_product->move(public_path('images/imageProductSecondary'), $imageProduct);
 
         $data = [
@@ -44,16 +44,14 @@ class Controller extends BaseController
         return redirect('/products');
     }
     public function updateimage(Request $request){
-        
+        $secondaryImage=$request->secondary;
     try {
         $idProduct=$request->id_main;
         $mainImage=$request->main;
         $idImageProduct=$request->id_secondary;
         $secondaryImage=$request->secondary;
-        $rutaSecondary3=public_path().'/images/imageProductSecondary/'.$secondaryImage;
-        $rutaSecondary4=public_path().'/images/imageProduct/'.$secondaryImage;
-        Storage::move(public_path('images/imageProduct/'.$mainImage) ,public_path('images/imageProductSecondary/'.$mainImage));
-        // Storage::move($rutaSecondary3, $rutaSecondary4);
+        rename(public_path("images/imageProduct/").$mainImage ,public_path("images/imageProductSecondary/").$mainImage);
+        rename(public_path("images/imageProductSecondary/").$secondaryImage,public_path("images/imageProduct/").$secondaryImage);
         $product=Product::find($idProduct);
         $productImage=ProductImage::find($idImageProduct);
         $product->image_product=$secondaryImage;
@@ -64,6 +62,8 @@ class Controller extends BaseController
     } catch(exception $e){
         return response($e, 200)
         ->header('Content-Type', 'text/plain');
-    }     
+    }
+    return response("SUCCES", 200)
+        ->header('Content-Type', 'text/plain');
     }
 }

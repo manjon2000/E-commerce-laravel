@@ -82,17 +82,14 @@
     $(function() {
         $('#button_image_main').click(function() {
             var mainImage = $('#main_image').attr('value');
-            console.log(mainImage);
             var activeImage = $('.active').children('img').attr('value');
             var activeImage2 = $('.active').children('img').attr('value2');
-            console.log(activeImage);
             var data = {
                 'id_main': <?php echo $product->id ?>,
                 'main': mainImage,
                 'id_secondary': activeImage2,
                 'secondary': activeImage
             };
-            console.log(data)
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -100,7 +97,7 @@
             });
             $.post("{{route('updateimage')}}", data,
                 function(data, status) {
-                    console.log("Data: " + data + "\nStatus: " + status);
+                    location.reload();
                 });
         });
     });
