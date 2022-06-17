@@ -40,7 +40,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
             //Ruta de productos
             Route::resource('products', 'ProductsController');
             Route::get('/images/{image}/edit', 'ProductsController@updateimagesindex')->name('updateimageindex');
-            Route::put('/images/{image}', 'ProductsController@updateimages')->name('updateimage');
+            Route::post('/imageschanges', 'Controller@updateimage')->name('updateimage');
+            Route::get('/images/create/{id}', 'Controller@createimagesindex')->name('createimageindex');
+            Route::post('/images2', 'Controller@createimages')->name('createimage');
+
             //ruta sizes en admin
             Route::resource('sizes', SizesController::class);
             Route::resource('inventories', InventoriesController::class);
@@ -48,29 +51,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
             // Ruta de store en admin
             Route::resource('stores', StoresController::class);
 
+
         });
 
         //ruta per usuari no admin
         Route::get('profile', "UsersController@profile");
-<<<<<<< HEAD
-=======
 
-        
->>>>>>> main
-        //Ruta de productos
-        Route::get('/images/create/{id}', 'Controller@createimagesindex')->name('createimageindex');
-        Route::post('/images2', 'Controller@createimages')->name('createimage');
-        //ruta sizes en admin
-<<<<<<< HEAD
-        Route::resource('sizes', SizesController::class);
-        Route::resource('inventories', InventoriesController::class);
 
-        //******************UTILES********************* */
 
-        Route::get('/cities/{country}', 'ToolsController@cities')->name('tools.cities');
-=======
-        Route::post('/imageschanges', 'Controller@updateimage')->name('updateimage');
->>>>>>> main
 
     });
 
@@ -78,8 +66,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     Route::get('/cities/{country}', 'ToolsController@cities')->name('tools.cities');
 
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 });
