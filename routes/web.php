@@ -52,7 +52,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         //ruta per usuari no admin
         Route::get('profile', "UsersController@profile");
-<<<<<<< HEAD
         //Ruta de productos
         Route::resource('products', 'ProductsController');
         Route::get('/images/create/{id}', 'Controller@createimagesindex')->name('createimageindex');
@@ -60,15 +59,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         //ruta sizes en admin
         Route::resource('sizes', SizesController::class);
         Route::resource('inventories', InventoriesController::class);
-=======
->>>>>>> main
 
         //******************UTILES********************* */
 
         Route::get('/cities/{country}', 'ToolsController@cities')->name('tools.cities');
 
     });
-<<<<<<< HEAD
 
     //******************UTILES********************* */
 
@@ -76,6 +72,4 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::post('/imageschanges', 'Controller@updateimage')->name('updateimage');
 
 
-=======
->>>>>>> main
 });
