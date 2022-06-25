@@ -18,8 +18,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     //***************RUTAS DEL FRONTEND*****************
     //**************************************************
     Route::get('/', function () {
-        return view('welcome');
-    });
+        return view('homepage');
+    }) -> name('homepage');
+    Route::post('/item-cart/query','SectionsController@itemsCart') -> name('queryCart');
+    Route::get('/demo-cart', 'SectionsController@demoCart')-> name('demoCart');
+    Route::post('/demo-cart/post', 'SectionsController@addCart')-> name('demoCartAjax');
 
     //***************RUTAS DEL BACKEND******************
     //**************************************************

@@ -3,7 +3,7 @@
 @section('title', 'E-commerce - Categories')
 
 @section('content_header')
-    <h1>{{ __('web.categories') }} | {{ __('web.list') }}</h1>
+    <h1 class="card card-body p-3">{{ __('web.categories') }} | {{ __('web.list') }}</h1>
 @stop
 
 @section('content')
