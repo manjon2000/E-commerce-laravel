@@ -109,6 +109,7 @@ body
     display: flex;
     align-items: center;
     justify-content:space-between;
+    flex-wrap: wrap;
 }
 
 .icon_delate i
@@ -137,6 +138,10 @@ body
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     box-shadow: var(--shadowBtnCategory);
+}
+.group_info-cart
+{
+    margin-top: 20px;
 }
 
 @media screen and (min-width: 375px)

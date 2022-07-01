@@ -24,14 +24,14 @@
                     <label for="name" class="form-label ml-5">{{__('web.name_product')}}</label>
                 </div>
                 <div class="mt-5 mb-3 col-6">
-                    {!!Form::text('name', null ,['class'=>'form-control text-center rounded'])!!}
+                    {!!Form::text('name', null ,['class'=>'form-control  rounded'])!!}
                 </div>
                 <!-- Preu porducte -->
                 <div class="mb-3 col-6 ">
                     <label for="price" class="form-label ml-5">{{__('web.price_product')}}</label>
                 </div>
                 <div class="mb-3 col-6">
-                    {!!Form::text('price', null ,['class'=>'form-control text-center rounded'])!!}
+                    {!!Form::text('price', null ,['class'=>'form-control  rounded'])!!}
                 </div>
                 <!-- Categoria producte -->
                 <div class="mb-3 col-6 ">

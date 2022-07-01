@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\Cart;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class SectionsController extends Controller
 {
-    //
+    public function home()
+    {
+
+      $categorias = Category::get();
+      return view('homepage')
+      -> with('categorias', $categorias);
+    }
 
      public function demoCart()
      {

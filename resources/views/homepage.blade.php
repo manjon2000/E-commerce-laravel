@@ -28,9 +28,9 @@
         <div class="title-cart">
             <h2>CARRITO</h2>
         </div>
-        <div class="content_cart">
+        <div class="content_cart" id="content_cart">
             <!-- Item -->
-            <div class="item_cart">
+            {{-- <div class="item_cart">
                 <div class="icon_delate">
                     <i class="fas fa-times-circle"></i>
                 </div>
@@ -45,7 +45,7 @@
                         <p>$234.99</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- End Item -->
         </div>
 
@@ -141,35 +141,37 @@
 
             <!-- Tabs -->
             <div class="header-container__btn-tabs-category">
-                <a href="#urbana" class="item-opacity-low">
-                    <img src="./assets/images/img_prueba.jpg" width="40">
-                </a>
-                <a href="#inviero" class="item-opacity-low">
-                    <img src="./assets/images/bg-header-category.jpg" width="40">
-                </a>
-                <a href="#destacado" class="item-opacity-low">
-                    <img src="./assets/images/img_product-bg-white.webp" width="40">
-                </a>
+
+                @if (count($categorias) > 0)
+                    @foreach ($categorias as $categoria)
+                        <a href="#{{$categoria -> name}}" class="item-opacity-low">
+                            <img src="{{asset('images')}}/{{$categoria -> image_category}}" width="40">
+                        </a>
+                    @endforeach
+                @endif
+               
+              
             </div>
 
 
             <div class="header--container__item-tab">
-                <section id="urbana" class="item" style="background-image: url(./assets/images/img_prueba.jpg);">
-                    <a href="">
-                        <span class="color-orange">1- </span> Urbana
-                    </a>
-                </section>
-                <section id="inviero" class="item" style="background-image: url(./assets/images/bg-header-category.jpg);">
-                    <a href="">
-                        <span class="color-orange">2- </span> Invierno
-                    </a>
-                </section>
 
-                <section id="destacado" class="item" style="background-image: url(./assets/images/img_product-bg-white.webp);">
+            @if (count($categorias) > 0)
+                @foreach ($categorias as $categoria)
+                <section id="{{$categoria -> name}}" class="item" 
+                    style="background-image: url({{asset('images')}}/{{$categoria -> image_category}});">
                     <a href="">
-                        <span class="color-orange">3- </span> Destacado
+                        {{$categoria -> name}}
                     </a>
                 </section>
+                    {{-- <a href="#{{$categoria -> name}}" class="item-opacity-low">
+                        <img src="{{asset('images')}}/{{$categoria -> image_category}}" width="40">
+                    </a> --}}
+                @endforeach
+            @endif
+
+                
+               
             </div>
         </div>
        
